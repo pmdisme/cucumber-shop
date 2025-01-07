@@ -11,7 +11,10 @@ public class Product {
         this.stock = stock;
     }
 
-    public void cutStock(int quantity) {
+    public void cutStock(int quantity) throws NotEnoughStockException {
+        if (quantity >= stock) {  // เปลี่ยนจาก > เป็น >=
+            throw new NotEnoughStockException("Not enough stock for product: " + name);
+        }
         stock -= quantity;
     }
 
